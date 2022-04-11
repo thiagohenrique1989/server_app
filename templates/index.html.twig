@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Server List</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>Server List</h1>
+            <hr/>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-3">
+                <form id="filter-form">
+                    <div class="mb-3">
+                        <label for="storage" class="form-label">Storage</label>
+                        <span id="storage_badge" class="badge bg-secondary">24TB</span>
+                        <input type="range" class="form-range" id="storage_slider" name="storage_slider" min="0" max="13" value="13">
+                        <input type="hidden" name="storage" id="storage" value="24000"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ram" class="form-label">RAM</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="4GB" name="ram[]" id="ram_4gb">
+                            <label class="form-check-label" for="ram_4gb">4GB</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="8GB" name="ram[]" id="ram_8gb">
+                            <label class="form-check-label" for="ram_8gb">8GB</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="16GB" name="ram[]" id="ram_16gb">
+                            <label class="form-check-label" for="ram_16gb">16GB</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="32GB" name="ram[]" id="ram_32gb">
+                            <label class="form-check-label" for="ram_32gb">32GB</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="64GB" name="ram[]" id="ram_64gb">
+                            <label class="form-check-label" for="ram_64gb">64GB</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="96GB" name="ram[]" id="ram_96gb">
+                            <label class="form-check-label" for="ram_96gb">96GB</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="128GB" name="ram[]" id="ram_128gb">
+                            <label class="form-check-label" for="ram_128gb">128GB</label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="storage_type" class="form-label">Hard Disk Type</label>
+                        <select name="storage_type" class="form-select" aria-label="Hard Disk Type" id="storage_type">
+                            <option selected></option>
+                            <option value="SAS">SAS</option>
+                            <option value="SATA2">SATA2</option>
+                            <option value="SSD">SSD</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <select name="location" class="form-select" aria-label="Location" id="location">
+                            <option selected></option>
+                            <option value="AmsterdamAMS-01">Amsterdam</option>
+                            <option value="DallasDAL-10">Dallas</option>
+                            <option value="FrankfurtFRA-10">Frankfurt</option>
+                            <option value="Hong KongHKG-10">Hong Kong</option>
+                            <option value="San FranciscoSFO-12">San Francisco</option>
+                            <option value="SingaporeSIN-11">Singapore</option>
+                            <option value="Washington D.C.WDC-01">Washington D.C.</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary mb-3">Search</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-12 col-md-9">
+                <table class="table" id="list-table">
+                    <thead>
+                        <th>Model</th>
+                        <th>RAM</th>
+                        <th>HDD</th>
+                        <th>Location</th>
+                        <th>Price</th>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div class="spinner position-relative visually-hidden">
+                    <div class="spinner-border position-absolute start-50" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ asset('js/app.js') }}"></script>
+</body>
+</html>
