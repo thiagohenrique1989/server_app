@@ -83,7 +83,7 @@ class ReadSpreadsheetCommand extends Command
      * @param array $data
      * @return array
      */
-    private function transformData(array $data): array
+    public function transformData(array $data): array
     {
         $matches = [];
         preg_match("/(\d+)x(\d+)(GB|TB)(.+)/", $data[Server::STORAGE_RAW], $matches);
@@ -101,7 +101,7 @@ class ReadSpreadsheetCommand extends Command
      * @param $measure
      * @return string
      */
-    private function calcStorage($number, $capacity, $measure): string
+    public function calcStorage($number, $capacity, $measure): string
     {
         if ($measure === 'TB') {
             $capacity *= 1000;
